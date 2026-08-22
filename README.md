@@ -1,174 +1,128 @@
+<div align="center">
+
 # Portfólio Profissional — Sérgio Parreiras
 
+<img src="docs/img/studio.gif" alt="Studio" width="400" height="400" />
+
+![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+
+</div>
+
 **Instituição:** Pontifícia Universidade Católica de Minas Gerais (PUC Minas)
-**Curso:** Engenharia de Software
-**Disciplina:** Projeto de Software
-**Professora:** Milena Menezes Adão
-**Atividade:** Laboratório 1 — Segundo Semestre/2026
+**Curso:** Engenharia de Software · **Disciplina:** Projeto de Software
+**Professora:** Milena Menezes Adão · **Atividade:** Laboratório 1 — 2º Semestre/2026
 **Aluno:** Sérgio Parreiras
 
-**Repositório:** `TODO — link do repositório GitHub`
-**Site publicado:** `TODO — link após o deploy (Lab01S03)`
+**Repositório:** `TODO`
+**Site publicado:** `TODO`
 
 ---
 
-## 1. Sobre o projeto
+## Sobre o projeto
 
-Este repositório contém o desenvolvimento do **Laboratório 1** da
-disciplina de Projeto de Software: um website de portfólio
-profissional pessoal, com o objetivo de apresentar minha trajetória,
-habilidades técnicas, projetos desenvolvidos e formas de contato de
-maneira moderna e acessível.
+Portfólio pessoal em página única (scroll entre seções), construído
+para apresentar minha atuação como desenvolvedor back-end. O menu
+acompanha a seção visível na tela e todo o conteúdo tem versão em
+português e inglês.
 
-O sistema é organizado em quatro seções, navegáveis por um menu fixo:
+- **Sobre Mim** — resumo profissional, competências agrupadas por
+  categoria (SQL, Linguagens, Back-end, Front-end, Cloud & DevOps,
+  Metodologia) e idiomas.
+- **Projetos** — linha do tempo com 5 projetos (2023–2025), como o
+  *safeTrade* e a *Livremente Homeopatia*, cada um com descrição,
+  stack utilizada e link do repositório.
+- **Experiências** — FlowInsight (atual), PCX Tecnologia da Informação
+  (estágio) e trabalhos freelance via 99Freelas, além de
+  certificações (Red Hat, Cisco).
+- **Contato** — links diretos para e-mail, WhatsApp e LinkedIn, e um
+  formulário que dispara o envio por e-mail (`mailto:`).
 
-1. **Sobre Mim** — apresentação em português e inglês, com formação,
-   área de atuação e principais competências técnicas.
-2. **Projetos** — linha do tempo dos projetos desenvolvidos, do mais
-   antigo ao mais recente, com descrição, tecnologias utilizadas e
-   link para o repositório no GitHub.
-3. **Experiências** — histórico profissional (estágio, freelance e
-   emprego atual), com empresa, cargo, período e principais atividades.
-4. **Contato** — ícones clicáveis para e-mail, WhatsApp e LinkedIn, e
-   um formulário de contato com envio por e-mail.
+## Tecnologias
 
-## 2. Tecnologias previstas
+| Tecnologia | Uso neste projeto |
+|---|---|
+| **React 19** | Componentização da interface |
+| **Vite** | Servidor de desenvolvimento e build |
+| **Tailwind CSS v4** | Estilização via utilitários, sobre tokens de cor próprios |
+| **JavaScript (JSX)** | Linguagem do front-end — sem TypeScript nesta versão |
+| **Figma** | Wireframes de média fidelidade |
+| **Vercel** | Hospedagem prevista para o deploy final |
 
-| Camada | Tecnologia | Finalidade |
+## Design
+
+Tema escuro com uma única cor de acento (`#00ff87`), sem elementos
+decorativos além do necessário. Três famílias tipográficas, cada uma
+com um papel fixo: **Fraunces** (serifada) nos títulos, **Instrument
+Sans** no texto corrido e **JetBrains Mono** em rótulos, tags e
+metadados — reforçando a estética de terminal/editor de código.
+
+| Token | Valor | Uso |
 |---|---|---|
-| Front-end | [React 19](https://react.dev/) | Biblioteca para construção da interface |
-| Build / Dev server | [Vite](https://vite.dev/) | Ambiente de desenvolvimento e empacotamento |
-| Estilização | [Tailwind CSS v4](https://tailwindcss.com/) | Sistema de utilitários CSS |
-| Linguagem | JavaScript (JSX) | — |
-| Prototipação | Figma | Wireframes de média fidelidade |
-| Hospedagem (planejada) | Vercel / Render | Publicação gratuita em nuvem |
+| `--color-bg` | `#080808` | Fundo |
+| `--color-fg` | `#ededed` | Texto principal |
+| `--color-accent` | `#00ff87` | Destaques, links ativos, botão |
+| `--color-surface` / `-2` | `#0e0e0e` / `#111111` | Cards, inputs, tags |
+| `--color-border` / `-soft` | `#1a1a1a` / `#222222` | Divisórias |
 
-Não serão utilizadas bibliotecas de componentes prontos (como Material
-UI ou Mantine): os elementos visuais (cards, formulário, timeline)
-serão construídos manualmente com Tailwind, sobre um conjunto próprio
-de tokens de design.
+## Arquitetura do código
 
-## 3. Design e padrão de desenvolvimento
-
-**Conceito visual:** tema escuro, inspirado em terminal/editor de
-código, com um único acento de cor (verde `#00ff87`) usado com
-moderação. Tipografia combinando uma serifada (títulos), uma
-sans-serif (texto corrido) e uma monoespaçada (rótulos, código,
-metadados).
-
-**Padrão de arquitetura do código:** componentização por
-responsabilidade, com separação entre dados e apresentação:
-
-- `src/data/` — conteúdo do site (perfil, projetos, experiências,
-  competências), independente da camada visual;
-- `src/components/` — um componente por seção da página, quebrado em
-  subcomponentes menores quando necessário (ex.: `Projects` →
-  `ProjectItem`);
-- `src/components/ui/` — peças reutilizáveis (rótulo de seção, tag,
-  campo de formulário, divisória);
-- `src/hooks/` — lógica reaproveitável (`useActiveSection`, que
-  detecta qual seção está visível para destacar no menu).
-
-Essa separação segue o princípio de **responsabilidade única**: cada
-arquivo tem um motivo claro para existir e para mudar.
-
-## 4. Wireframes (Figma — média fidelidade)
-
-Protótipo de média fidelidade cobrindo a página única do site
-(scroll entre seções): navbar fixa, Hero/Sobre Mim, Projetos
-(timeline vertical), Experiências e Contato, além do rodapé.
-
-![Wireframe do portfólio — navbar, hero, projetos, experiências e contato](docs/wireframes/wireframe-portfolio.png)
-
-Link do arquivo no Figma: `TODO`
-
-## 5. Estrutura inicial do site
+O projeto separa **conteúdo** (`data/`) de **apresentação**
+(`components/`), e cada seção da página é um componente próprio,
+quebrado em partes menores quando necessário:
 
 ```
 portfolio-sergio/
-├── index.html
-├── package.json
-├── vite.config.js
 ├── docs/
-│   └── wireframes/
-│       └── wireframe-portfolio.png
+│   └── img/
+│       ├── studio.gif
+│       └── wireframePortfolio.png
 ├── public/
 │   └── favicon.svg
 └── src/
-    ├── main.jsx                # ponto de entrada da aplicação
-    ├── App.jsx                 # monta as seções na ordem da página
-    ├── index.css                # tokens de design (cores, fontes, animações)
-    ├── data/
-    │   ├── nav.js                # itens do menu de navegação
-    │   ├── profile.js            # nome, resumo, contatos, idiomas
-    │   ├── skills.js             # competências, agrupadas por categoria
-    │   ├── projects.js           # conteúdo da seção "Projetos"
-    │   └── experience.js         # experiências profissionais e certificações
+    ├── main.jsx                # ponto de entrada
+    ├── App.jsx                 # ordem das seções na página
+    ├── index.css                # tokens de cor, fontes, animações
+    │
+    ├── data/                    # conteúdo do site, sem lógica visual
+    │   ├── nav.js                 # itens do menu
+    │   ├── profile.js             # nome, resumo, contatos, idiomas
+    │   ├── skills.js               # competências por categoria
+    │   ├── projects.js             # projetos da timeline
+    │   └── experience.js           # experiências e certificações
+    │
     ├── hooks/
-    │   └── useActiveSection.js   # detecta a seção visível na tela
+    │   └── useActiveSection.js    # detecta a seção visível para o menu
+    │
     └── components/
-        ├── Header.jsx             # menu fixo, versão mobile, alternância PT/EN
-        ├── Hero.jsx                # seção "Sobre Mim"
-        ├── Projects.jsx            # seção "Projetos" (linha do tempo)
-        ├── ProjectItem.jsx         # item individual da linha do tempo
-        ├── Experience.jsx          # seção "Experiências" e certificações
-        ├── ExperienceItem.jsx      # item individual de experiência
-        ├── Contact.jsx             # seção "Contato"
-        ├── ContactForm.jsx         # formulário de contato (envio por e-mail)
-        ├── ContactLink.jsx         # link de contato com ícone
+        ├── Header.jsx              # menu fixo + versão mobile + PT/EN
+        ├── Hero.jsx                 # seção "Sobre Mim"
+        ├── Projects.jsx             # seção "Projetos"
+        ├── ProjectItem.jsx          # item da timeline
+        ├── Experience.jsx           # seção "Experiências"
+        ├── ExperienceItem.jsx       # item de experiência
+        ├── Contact.jsx              # seção "Contato"
+        ├── ContactForm.jsx          # formulário (envio por e-mail)
+        ├── ContactLink.jsx          # link de contato com ícone
         ├── Footer.jsx
-        ├── icons/index.jsx         # ícones em SVG
-        └── ui/                     # componentes visuais reutilizáveis
+        ├── icons/index.jsx          # ícones SVG usados no site
+        └── ui/                      # peças reutilizáveis (Tag, Field, ...)
 ```
 
-## 6. Instalação e execução local
-
-Pré-requisito: [Node.js](https://nodejs.org/) instalado.
+## Instalação e execução local
 
 ```bash
-# instalar dependências
 npm install
+npm run dev       # http://localhost:5173
 
-# rodar em ambiente de desenvolvimento
-npm run dev
+npm run build      # gera dist/
+npm run preview    # serve a build localmente
 ```
 
-O site fica disponível em `http://localhost:5173`.
+## Wireframes
 
-Para gerar a versão de produção:
-
-```bash
-npm run build      # gera a pasta dist/
-npm run preview    # serve a build localmente, para conferência
-```
-
-## 7. Processo de desenvolvimento
-
-### Lab01S01 — Planejamento e prototipação do site (4 pontos)
-
-- [x] Criação do repositório GitHub com README inicial
-- [x] Wireframes das páginas no Figma (média fidelidade)
-- [x] Protótipo inicial do front-end (React)
-- [x] Implementação da navegação (estrutura de páginas e links entre
-      seções) e do layout principal (organização visual base do site,
-      com cabeçalho, rodapé e área de conteúdo)
-
-**Entrega:** README com imagens dos protótipos, descrição do projeto,
-tecnologias previstas e estrutura inicial do site.
-
-### Lab01S02 — Implementação das funcionalidades principais (4 pontos)
-
-- [x] Página "Sobre Mim" com versões em português e inglês
-- [x] Página "Projetos" com timeline dinâmica
-- [x] Página "Experiências" com dados organizados
-- [x] Página "Contato" com ícones e formulário funcional
-- [ ] Validações básicas e responsividade *(responsividade ok;
-      validações do formulário ainda são apenas as nativas do HTML)*
-
-### Lab01S03 — Hospedagem e finalização do sistema (7 pontos)
-
-- [ ] Deploy completo em Render, Vercel, Heroku, Fly.io ou similar
-- [ ] Ajustes visuais e de usabilidade
-- [ ] Inserção de imagens/GIFs dos projetos em execução
-- [ ] README final com tecnologias utilizadas e link para o site publicado
-- [ ] Instruções de uso e desenvolvimento
+![Wireframe do portfólio](docs/img/wireframePortfolio.png)
