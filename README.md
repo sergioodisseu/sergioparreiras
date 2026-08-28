@@ -2,7 +2,7 @@
 
 # Portfólio Profissional — Sérgio Parreiras
 
-<img src="docs/img/studio.gif" alt="Studio" width="400" height="400" />
+<img src="docs/img/Trash Delete GIF by PERFECTL00P.gif" alt="Studio" width="700" height="700" />
 
 ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -125,4 +125,4 @@ npm run preview    # serve a build localmente
 
 ## Wireframes
 
-![Wireframe do portfólio](docs/img/wireframePortfolio.png)
+![Wireframe do portfólio](docs/img/wireframe.png)
