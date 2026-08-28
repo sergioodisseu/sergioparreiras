@@ -18,22 +18,24 @@ export default function Header({ lang, onToggleLang }) {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 h-15 border-b border-border bg-bg/92 backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-12 h-14 border-b-2 border-border bg-bg/95">
         <button
-          onClick={() => handleNavClick("about")}
-          className="font-display text-lg font-bold tracking-tight text-accent"
+          onClick={() => scrollToSection("select")}
+          className="font-pixel text-[11px] text-alien [text-shadow:0_0_6px_var(--color-alien)]"
         >
-          sergio<span className="text-fg">.dev</span>
+          SÉRGIO.EXE
         </button>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`font-mono text-xs uppercase tracking-[0.12em] transition-colors ${
-                active === item.id ? "text-accent" : "text-fg-subtle"
-              }`}
+              className="font-pixel text-[10px] tracking-wide transition-colors"
+              style={{
+                color: active === item.id ? item.colorVar : "var(--color-fg-muted)",
+                textShadow: active === item.id ? `0 0 6px ${item.colorVar}` : "none",
+              }}
             >
               {lang === "pt" ? item.pt : item.en}
             </button>
@@ -50,14 +52,13 @@ export default function Header({ lang, onToggleLang }) {
       </header>
 
       {menuOpen && (
-        <div className="fixed inset-0 top-15 z-40 flex flex-col items-center justify-center gap-8 bg-bg">
+        <div className="fixed inset-0 top-14 z-30 flex flex-col items-center justify-center gap-10 bg-bg">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`font-display text-3xl font-bold ${
-                active === item.id ? "text-accent" : "text-fg"
-              }`}
+              className="font-pixel text-lg"
+              style={{ color: item.colorVar, textShadow: `0 0 6px ${item.colorVar}` }}
             >
               {lang === "pt" ? item.pt : item.en}
             </button>
@@ -72,7 +73,7 @@ function LangToggle({ lang, onToggle }) {
   return (
     <button
       onClick={onToggle}
-      className="font-mono text-xs px-3 py-1 rounded-sm border border-border-soft text-fg-subtle"
+      className="font-pixel text-[10px] px-2 py-1 rounded border-2 border-border text-fg-muted"
     >
       {lang === "pt" ? "EN" : "PT"}
     </button>

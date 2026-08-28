@@ -1,6 +1,9 @@
-export default function Tag({ children }) {
+export default function Tag({ children, color }) {
   return (
-    <span className="font-mono text-xs px-2 py-0.5 rounded-sm bg-surface-2 text-fg-subtle border border-border-soft">
+    <span
+      className="font-pixel text-[9px] px-2 py-1 rounded border-2"
+      style={{ borderColor: color || "var(--color-border)", color: color || "var(--color-fg-muted)" }}
+    >
       {children}
     </span>
   );

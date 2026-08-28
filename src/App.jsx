@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header";
+import ArcadeSelect from "./components/ArcadeSelect";
 import Hero from "./components/Hero";
 import Divider from "./components/ui/Divider";
 import Projects from "./components/Projects";
@@ -13,8 +14,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-bg text-fg">
+      <div className="crt-overlay" />
       <Header lang={lang} onToggleLang={toggleLang} />
 
+      <ArcadeSelect lang={lang} />
+      <Divider />
       <Hero lang={lang} />
       <Divider />
       <Projects lang={lang} />

@@ -1,25 +1,40 @@
-const fieldClasses =
-  "w-full text-sm px-4 py-3 rounded-sm bg-surface border border-border-soft text-fg " +
-  "outline-none transition-colors focus:border-accent";
+const baseClasses =
+  "w-full text-base px-4 py-3 rounded border-2 bg-surface text-fg " +
+  "outline-none transition-colors focus:border-[var(--focus-color,var(--color-joystick))]";
 
-export function Field({ label, ...inputProps }) {
+// Cor de erro fixa (vermelho), independente do acento da seção — sinal
+// universal de "algo está errado", sem depender do tema local.
+const errorClasses = "border-red-500 focus:border-red-500";
+const normalClasses = "border-border";
+
+export function Field({ label, error, ...inputProps }) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="font-mono text-xs uppercase tracking-widest text-fg-faint">
+      <label className="font-pixel text-[9px] uppercase tracking-widest text-fg-muted">
         {label}
       </label>
-      <input className={fieldClasses} {...inputProps} />
+      <input
+        className={`${baseClasses} ${error ? errorClasses : normalClasses}`}
+        aria-invalid={Boolean(error)}
+        {...inputProps}
+      />
+      {error && <span className="text-sm text-red-400">{error}</span>}
     </div>
   );
 }
 
-export function TextAreaField({ label, ...textareaProps }) {
+export function TextAreaField({ label, error, ...textareaProps }) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="font-mono text-xs uppercase tracking-widest text-fg-faint">
+      <label className="font-pixel text-[9px] uppercase tracking-widest text-fg-muted">
         {label}
       </label>
-      <textarea className={`${fieldClasses} resize-none`} {...textareaProps} />
+      <textarea
+        className={`${baseClasses} resize-none ${error ? errorClasses : normalClasses}`}
+        aria-invalid={Boolean(error)}
+        {...textareaProps}
+      />
+      {error && <span className="text-sm text-red-400">{error}</span>}
     </div>
   );
 }

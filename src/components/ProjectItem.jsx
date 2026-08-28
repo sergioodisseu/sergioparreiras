@@ -1,20 +1,16 @@
 import Tag from "./ui/Tag";
 import { GithubIcon } from "./icons";
 
-export default function ProjectItem({ project, lang }) {
+export default function ProjectItem({ project, lang, color }) {
   return (
-    <div className="relative">
-      <span className="absolute -left-8 top-1.5 w-2.25 h-2.25 rounded-full bg-accent shadow-[0_0_8px_var(--color-accent)]" />
-
-      <div className="grid md:grid-cols-5 gap-8">
+    <div className="arcade-screen rounded p-6" style={{ "--screen-color": color }}>
+      <div className="grid md:grid-cols-5 gap-6">
         <div className="md:col-span-2">
-          <div className="font-mono text-xs tracking-wide text-accent mb-2">
+          <div className="font-pixel text-[9px] mb-2" style={{ color }}>
             {project.year}
           </div>
-          <h3 className="font-display font-bold text-2xl tracking-tight mb-3">
-            {project.title}
-          </h3>
-          <p className="text-sm leading-relaxed text-fg-muted mb-4">
+          <h3 className="font-pixel text-sm mb-3">{project.title}</h3>
+          <p className="text-base leading-relaxed text-fg-muted mb-4">
             {project.description[lang]}
           </p>
           <div className="flex flex-wrap gap-2 mb-5">
@@ -26,7 +22,7 @@ export default function ProjectItem({ project, lang }) {
             href={project.github}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-xs flex items-center gap-2 w-fit text-fg-subtle transition-colors hover:text-fg"
+            className="text-base flex items-center gap-2 w-fit text-fg-muted transition-colors hover:text-fg"
           >
             <GithubIcon size={14} />
             {lang === "pt" ? "Ver repositório" : "View repository"} →
@@ -34,24 +30,23 @@ export default function ProjectItem({ project, lang }) {
         </div>
 
         <div className="md:col-span-3">
-          <ProjectImage project={project} />
+          <ProjectImage project={project} color={color} />
         </div>
       </div>
     </div>
   );
 }
 
-function ProjectImage({ project }) {
+function ProjectImage({ project, color }) {
   return (
-    <div className="overflow-hidden rounded-sm border border-border bg-surface h-55 flex items-center justify-center">
+    <div
+      className="overflow-hidden rounded border-2 bg-surface h-50 flex items-center justify-center"
+      style={{ borderColor: color }}
+    >
       {project.image ? (
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-        />
+        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
       ) : (
-        <span className="font-mono text-xs text-fg-faint px-4 text-center">
+        <span className="font-pixel text-[9px] text-fg-faint px-4 text-center">
           {project.title}
         </span>
       )}

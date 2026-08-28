@@ -1,21 +1,23 @@
-export default function ExperienceItem({ item, lang, isLast }) {
+export default function ExperienceItem({ item, lang, color, isLast }) {
   return (
-    <div className={`py-8 border-t border-border ${isLast ? "border-b" : ""}`}>
+    <div className={`py-8 border-t-2 border-border ${isLast ? "border-b-2" : ""}`}>
       <div className="grid md:grid-cols-3 gap-6">
         <div>
-          <div className="font-mono text-xs tracking-wide text-fg-faint mb-1">
-            {item.period}
+          <div className="font-pixel text-[9px] text-fg-faint mb-2">{item.period}</div>
+          <div className="font-pixel text-xs mb-2" style={{ color }}>
+            {item.company}
           </div>
-          <div className="font-semibold text-sm text-accent mb-1">{item.company}</div>
-          <div className="font-mono text-xs text-fg-faint">{item.type[lang]}</div>
+          <div className="text-sm text-fg-faint">{item.type[lang]}</div>
         </div>
 
         <div className="md:col-span-2">
-          <div className="font-semibold text-base text-fg mb-3">{item.role[lang]}</div>
+          <div className="font-pixel text-[11px] mb-4">{item.role[lang]}</div>
           <ul className="flex flex-col gap-2">
             {item.bullets[lang].map((bullet) => (
-              <li key={bullet} className="text-sm leading-relaxed text-fg-muted flex gap-3">
-                <span className="text-accent shrink-0 mt-0.5">›</span>
+              <li key={bullet} className="text-base leading-relaxed text-fg-muted flex gap-3">
+                <span style={{ color }} className="shrink-0">
+                  ▸
+                </span>
                 {bullet}
               </li>
             ))}

@@ -1,14 +1,17 @@
-export default function SectionHeader({ number, title, subtitle }) {
+import PixelSprite from "../PixelSprite";
+
+export default function SectionHeader({ sprite, color, title, subtitle }) {
   return (
-    <div className="flex items-end gap-6">
-      <span className="font-mono text-ghost leading-none text-[clamp(3rem,8vw,5rem)]">
-        {number}
-      </span>
+    <div className="flex items-center gap-5 mb-14">
+      <PixelSprite sprite={sprite} size={44} />
       <div>
-        <h2 className="font-display font-bold leading-tight tracking-tight text-[clamp(1.8rem,4vw,3rem)]">
+        <h2
+          className="font-pixel text-lg md:text-2xl"
+          style={{ color, textShadow: `0 0 6px ${color}` }}
+        >
           {title}
         </h2>
-        <p className="font-mono text-xs text-fg-faint mt-1">{subtitle}</p>
+        <p className="text-sm text-fg-muted mt-1">{subtitle}</p>
       </div>
     </div>
   );

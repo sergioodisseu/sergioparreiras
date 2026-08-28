@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { navItems } from "../data/nav";
 
-// Observa cada seção da página e retorna o id da que está mais
-// visível no momento, para destacar o item correspondente no menu.
+
 export function useActiveSection() {
   const [active, setActive] = useState(navItems[0].id);
 

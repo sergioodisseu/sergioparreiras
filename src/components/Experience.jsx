@@ -1,47 +1,46 @@
 import { experience, certifications } from "../data/experience";
+import { sprites } from "../data/sprites";
 import SectionHeader from "./ui/SectionHeader";
 import ExperienceItem from "./ExperienceItem";
 
+const ACCENT = "var(--color-coin)";
+
 export default function Experience({ lang }) {
   return (
-    <section id="experience" className="px-6 md:px-16 lg:px-24 py-24">
-      <div className="max-w-5xl mx-auto">
-        <SectionHeader
-          number="02"
-          title={lang === "pt" ? "Experiências" : "Experience"}
-          subtitle={
-            lang === "pt"
-              ? "Profissional · Estágio · Freelance"
-              : "Professional · Internship · Freelance"
-          }
-        />
+    <section id="experience" className="px-6 md:px-16 py-24 max-w-4xl mx-auto">
+      <SectionHeader
+        sprite={sprites.coin}
+        color={ACCENT}
+        title={lang === "pt" ? "Experiências" : "Experience"}
+        subtitle={lang === "pt" ? "Profissional · Estágio · Freelance" : "Professional · Internship · Freelance"}
+      />
 
-        <div className="mt-16">
-          {experience.map((item, index) => (
-            <ExperienceItem
-              key={item.company}
-              item={item}
-              lang={lang}
-              isLast={index === experience.length - 1}
-            />
+      <div className="arcade-screen rounded px-6" style={{ "--screen-color": ACCENT }}>
+        {experience.map((item, index) => (
+          <ExperienceItem
+            key={item.company}
+            item={item}
+            lang={lang}
+            color={ACCENT}
+            isLast={index === experience.length - 1}
+          />
+        ))}
+      </div>
+
+      <div className="mt-12">
+        <h3 className="font-pixel text-[10px] text-fg-muted mb-5">
+          {lang === "pt" ? "CERTIFICAÇÕES" : "CERTIFICATIONS"}
+        </h3>
+        <div className="flex flex-col gap-3">
+          {certifications.map((cert) => (
+            <div key={cert.name} className="flex items-center gap-3 text-base">
+              <span style={{ color: ACCENT }}>●</span>
+              <span className="text-fg-muted">{cert.name}</span>
+              <span className="text-fg-faint text-sm">
+                — {cert.issuer}, {cert.year}
+              </span>
+            </div>
           ))}
-        </div>
-
-        <div className="mt-16">
-          <h3 className="font-mono text-xs uppercase tracking-[0.15em] text-fg-faint mb-6">
-            {lang === "pt" ? "Certificações" : "Certifications"}
-          </h3>
-          <div className="flex flex-col gap-3">
-            {certifications.map((cert) => (
-              <div key={cert.name} className="flex items-center gap-4">
-                <span className="text-accent text-[10px]">●</span>
-                <span className="text-sm text-fg-muted">{cert.name}</span>
-                <span className="font-mono text-xs text-fg-faint">
-                  — {cert.issuer}, {cert.year}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

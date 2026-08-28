@@ -1,28 +1,37 @@
 import { projects } from "../data/projects";
+import { sprites } from "../data/sprites";
 import SectionHeader from "./ui/SectionHeader";
 import ProjectItem from "./ProjectItem";
 
+const ACCENT = "var(--color-alien)";
+
 export default function Projects({ lang }) {
   return (
-    <section id="projects" className="px-6 md:px-16 lg:px-24 py-24">
-      <div className="max-w-5xl mx-auto">
-        <SectionHeader
-          number="01"
-          title={lang === "pt" ? "Projetos" : "Projects"}
-          subtitle={
-            lang === "pt"
-              ? "Linha do tempo — do mais antigo ao mais recente"
-              : "Timeline — oldest to most recent"
-          }
+    <section id="projects" className="px-6 md:px-16 py-24 max-w-4xl mx-auto">
+      <SectionHeader
+        sprite={sprites.alien}
+        color={ACCENT}
+        title={lang === "pt" ? "Projetos" : "Projects"}
+        subtitle={lang === "pt" ? "Do mais antigo ao mais recente" : "Oldest to most recent"}
+      />
+
+      {}
+      <div className="relative pl-8">
+        <div
+          className="absolute left-0 top-2 bottom-2 w-0.5"
+          style={{ background: `linear-gradient(to bottom, ${ACCENT}, transparent)` }}
         />
 
-        <div className="mt-16 relative pl-8">
-          <div className="timeline-line" />
-          <div className="flex flex-col gap-16">
-            {projects.map((project) => (
-              <ProjectItem key={project.title} project={project} lang={lang} />
-            ))}
-          </div>
+        <div className="flex flex-col gap-10">
+          {projects.map((project) => (
+            <div key={project.title} className="relative">
+              <span
+                className="absolute -left-9.5 top-2 w-2.5 h-2.5 rounded-full"
+                style={{ background: ACCENT, boxShadow: `0 0 6px ${ACCENT}` }}
+              />
+              <ProjectItem project={project} lang={lang} color={ACCENT} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

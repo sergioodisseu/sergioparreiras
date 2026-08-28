@@ -1,6 +1,3 @@
-// Do mais antigo para o mais recente. `image` é opcional: sem ela, o
-// card mostra um placeholder (ver ProjectItem.jsx). Troque por uma
-// imagem/GIF real do projeto em funcionamento antes da entrega final.
 export const projects = [
   {
     year: "2023",
