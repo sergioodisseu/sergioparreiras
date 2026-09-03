@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { profile } from "../data/profile";
 import { Field, TextAreaField } from "./ui/Field";
 
 const emptyForm = { name: "", email: "", message: "" };
@@ -7,16 +6,25 @@ const ACCENT = "var(--color-joystick)";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_MESSAGE_LENGTH = 10;
 
+/**
+ * URL do back-end de contato. Caminho relativo: funciona tanto em producao 
+ * ( front e back servidos pelo mesmo container) quanto em desenvolvimento local
+ * via proxy configurado no vite
+ */
+const CONTACT_API_URL = "/api/contact";
+
 const errorMessages = {
   pt: {
     name: "Digite seu nome.",
     email: "Digite um e-mail válido.",
     message: `A mensagem precisa ter pelo menos ${MIN_MESSAGE_LENGTH} caracteres.`,
+    server: "Não foi possível enviar. Tente de novo em instantes.",
   },
   en: {
     name: "Enter your name.",
     email: "Enter a valid email.",
     message: `Message must be at least ${MIN_MESSAGE_LENGTH} characters.`,
+    server: "Couldn't send it. Please try again shortly.",
   },
 };
 
@@ -34,14 +42,14 @@ function validate(form, lang) {
 export default function ContactForm({ lang }) {
   const [form, setForm] = useState(emptyForm);
   const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle"); 
 
   function updateField(field, value) {
     setForm((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const validationErrors = validate(form, lang);
@@ -50,19 +58,26 @@ export default function ContactForm({ lang }) {
       return;
     }
 
-    const subject = encodeURIComponent(`Contato via portfólio — ${form.name}`);
-    const body = encodeURIComponent(
-      `Nome: ${form.name}\nE-mail: ${form.email}\n\n${form.message}`
-    );
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    try {
+      const response = await fetch(CONTACT_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    setSent(true);
-    setForm(emptyForm);
-    setErrors({});
-    setTimeout(() => setSent(false), 5000);
+      if (!response.ok) throw new Error("Falha no envio");
+
+      setStatus("sent");
+      setForm(emptyForm);
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch {
+      setStatus("idle");
+      setErrors({ server: errorMessages[lang].server });
+    }
   }
 
-  if (sent) {
+  if (status === "sent") {
     return (
       <div
         className="arcade-screen rounded flex flex-col items-center justify-center h-64 gap-4"
@@ -72,7 +87,7 @@ export default function ContactForm({ lang }) {
           1UP
         </div>
         <p className="font-pixel text-[10px]" style={{ color: ACCENT }}>
-          {lang === "pt" ? "ABRINDO SEU E-MAIL..." : "OPENING YOUR EMAIL..."}
+          {lang === "pt" ? "MENSAGEM ENVIADA!" : "MESSAGE SENT!"}
         </p>
       </div>
     );
@@ -91,6 +106,7 @@ export default function ContactForm({ lang }) {
         value={form.name}
         onChange={(event) => updateField("name", event.target.value)}
         error={errors.name}
+        disabled={status === "sending"}
       />
       <Field
         label="E-mail"
@@ -98,6 +114,7 @@ export default function ContactForm({ lang }) {
         value={form.email}
         onChange={(event) => updateField("email", event.target.value)}
         error={errors.email}
+        disabled={status === "sending"}
       />
       <TextAreaField
         label={lang === "pt" ? "Mensagem" : "Message"}
@@ -105,13 +122,20 @@ export default function ContactForm({ lang }) {
         value={form.message}
         onChange={(event) => updateField("message", event.target.value)}
         error={errors.message}
+        disabled={status === "sending"}
       />
+
+      {errors.server && <span className="text-sm text-red-400">{errors.server}</span>}
+
       <button
         type="submit"
-        className="font-pixel text-xs px-6 py-4 w-full rounded border-2 transition-colors"
+        disabled={status === "sending"}
+        className="font-pixel text-xs px-6 py-4 w-full rounded border-2 transition-colors disabled:opacity-50"
         style={{ borderColor: ACCENT, color: ACCENT }}
       >
-        {lang === "pt" ? "ENVIAR" : "SEND"} ▶
+        {status === "sending"
+          ? lang === "pt" ? "ENVIANDO..." : "SENDING..."
+          : `${lang === "pt" ? "ENVIAR" : "SEND"} ▶`}
       </button>
     </form>
   );

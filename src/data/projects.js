@@ -8,7 +8,7 @@ export const projects = [
     },
     tech: ["Java", "Spring Boot", "PostgreSQL", "React"],
     github: "https://github.com/sergioodisseu",
-    image: null,
+    liveUrl: undefined,
   },
   {
     year: "2024",
@@ -19,7 +19,7 @@ export const projects = [
     },
     tech: ["Java", "Spring Boot", "PostgreSQL", "AWS EC2", "AWS RDS", "React"],
     github: "https://github.com/sergioodisseu",
-    image: null,
+    liveUrl: undefined,
   },
   {
     year: "2024",
@@ -30,7 +30,7 @@ export const projects = [
     },
     tech: ["Spring Boot", "GitHub Actions", "Docker", "Azure"],
     github: "https://github.com/sergioodisseu",
-    image: null,
+    liveUrl: undefined,
   },
   {
     year: "2025",
@@ -41,7 +41,7 @@ export const projects = [
     },
     tech: ["NestJS", "TypeScript", "Prisma", "PostgreSQL", "Docker", "Linux"],
     github: "https://github.com/sergioodisseu",
-    image: null,
+    liveUrl: undefined,
   },
   {
     year: "2025",
@@ -52,6 +52,19 @@ export const projects = [
     },
     tech: ["Bun", "NestJS", "Next.js", "SQLite", "Prisma", "Docker"],
     github: "https://github.com/sergioodisseu",
-    image: null,
+    liveUrl: undefined,
+  },
+  {
+    // TODO: ajuste o ano pra quando o projeto foi feito de verdade —
+    // deixei no fim da lista até você definir isso.
+    year: "TODO",
+    title: "Cobrinha 3D",
+    description: {
+      pt: "Snake em 3D rodando na superfície de um cubo, em C++ com raylib. Movimento com wrap-around entre as 6 faces, interpolação esférica (slerp) pra manter velocidade angular constante nas viradas de quina, câmera que acompanha a cobra suavemente e dificuldade dinâmica conforme ela cresce.",
+      en: "3D Snake running on the surface of a cube, in C++ with raylib. Wrap-around movement across the 6 faces, spherical interpolation (slerp) to keep constant angular speed on corner turns, a camera that smoothly follows the snake, and dynamic difficulty as it grows.",
+    },
+    tech: ["C++", "raylib"],
+    github: "https://github.com/sergioodisseu",
+    internalPath: "/projetos/cobrinha-3d",
   },
 ];

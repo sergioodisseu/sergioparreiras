@@ -15,7 +15,7 @@ export default function Projects({ lang }) {
         subtitle={lang === "pt" ? "Do mais antigo ao mais recente" : "Oldest to most recent"}
       />
 
-      {}
+      {/* Linha vertical da timeline, atrás dos cards */}
       <div className="relative pl-8">
         <div
           className="absolute left-0 top-2 bottom-2 w-0.5"

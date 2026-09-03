@@ -1,3 +1,8 @@
+// Sprites em pixel art originais, desenhados à mão como matriz de
+// caracteres: "0" = vazio · "1" = cor principal · "2" = cor de
+// destaque (olho/brilho). São desenhos genéricos de fliperama —
+// fantasma, alien, moeda, joystick — não reproduções de personagens
+// registrados de nenhum jogo específico.
 export const sprites = {
   ghost: {
     viewBox: [10, 10],
@@ -60,6 +65,8 @@ export const sprites = {
   },
 };
 
+// Liga cada seção do site ao seu sprite e cor de acento na tela de
+// seleção. `colorVar` é a variável CSS que a seção usa como acento.
 export const arcadeSections = [
   { id: "about", sprite: "ghost", colorVar: "var(--color-ghost)", pt: "Sobre Mim", en: "About" },
   { id: "projects", sprite: "alien", colorVar: "var(--color-alien)", pt: "Projetos", en: "Projects" },

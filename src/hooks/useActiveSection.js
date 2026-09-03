@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { navItems } from "../data/nav";
 
-
 export function useActiveSection() {
   const [active, setActive] = useState(navItems[0].id);
 

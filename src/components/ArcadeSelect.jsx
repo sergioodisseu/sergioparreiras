@@ -8,7 +8,6 @@ function scrollToSection(id) {
 
 export default function ArcadeSelect({ lang }) {
   const [activeIndex, setActiveIndex] = useState(0);
-
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === "ArrowRight") {
