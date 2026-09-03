@@ -64,7 +64,7 @@ export const projects = [
       en: "3D Snake running on the surface of a cube, in C++ with raylib. Wrap-around movement across the 6 faces, spherical interpolation (slerp) to keep constant angular speed on corner turns, a camera that smoothly follows the snake, and dynamic difficulty as it grows.",
     },
     tech: ["C++", "raylib"],
-    github: "https://github.com/sergioodisseu",
+    github: "https://github.com/sergioodisseu/snake",
     internalPath: "/projetos/cobrinha-3d",
   },
 ];

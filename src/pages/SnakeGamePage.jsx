@@ -46,7 +46,7 @@ export default function SnakeGamePage({ lang }) {
           W A S D {lang === "pt" ? "MOVER" : "MOVE"} · R {lang === "pt" ? "REINICIAR" : "RESTART"}
         </p>
 
-        <div className="w-full max-w-3xl flex justify-end gap-3 mb-2">
+        <div className="w-full max-w-4xl flex justify-end gap-3 mb-2">
           <button
             onClick={handleFullscreen}
             className="font-pixel text-[9px] px-3 py-2 rounded border-2 transition-colors"
@@ -69,7 +69,7 @@ export default function SnakeGamePage({ lang }) {
         </div>
 
         <div
-          className="arcade-screen rounded w-full max-w-3xl aspect-square md:aspect-video overflow-hidden bg-black"
+          className="arcade-screen rounded w-full max-w-4xl aspect-square overflow-hidden bg-black"
           style={{ "--screen-color": ACCENT }}
         >
           <iframe

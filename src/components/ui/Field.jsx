@@ -2,8 +2,6 @@ const baseClasses =
   "w-full text-base px-4 py-3 rounded border-2 bg-surface text-fg " +
   "outline-none transition-colors focus:border-[var(--focus-color,var(--color-joystick))]";
 
-// Cor de erro fixa (vermelho), independente do acento da seção — sinal
-// universal de "algo está errado", sem depender do tema local.
 const errorClasses = "border-red-500 focus:border-red-500";
 const normalClasses = "border-border";
 

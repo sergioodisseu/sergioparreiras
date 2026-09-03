@@ -1,4 +1,3 @@
-// Ícones em SVG puro, sem dependência externa.
 
 export function GithubIcon({ size = 16 }) {
   return (
