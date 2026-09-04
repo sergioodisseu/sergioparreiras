@@ -8,6 +8,7 @@ export const projects = [
     },
     tech: ["Java", "Spring Boot", "PostgreSQL", "React"],
     github: "https://github.com/sergioodisseu",
+    image: "docs/img/img-safetrade.png",
     liveUrl: undefined,
   },
   {
@@ -19,44 +20,34 @@ export const projects = [
     },
     tech: ["Java", "Spring Boot", "PostgreSQL", "AWS EC2", "AWS RDS", "React"],
     github: "https://github.com/sergioodisseu",
+    image: "docs/img/img-livrementehomeopatia.png",
     liveUrl: undefined,
   },
   {
-    year: "2024",
-    title: "Deploy Automatizado Azure CI/CD",
+    year: "2026",
+    title: "Fatal Kombat 1v1",
     description: {
-      pt: "Pipeline completo de build, teste e deploy automático no Azure com GitHub Actions e Docker. Zero-downtime deployment com rollback automático.",
-      en: "Complete build, test and automatic deploy pipeline on Azure with GitHub Actions and Docker. Zero-downtime deployment with automatic rollback.",
+      pt: "Jogo de luta 1v1 em turnos para console, desenvolvido em C++ moderno. Arquitetado com princípios POO e SOLID, apresentando 14+ classes únicas, modo vs IA, PvP local e persistência de dados.",
+      en: "Turn-based 1v1 console fighting game developed in modern C++. Architected following OOP and SOLID principles, featuring 14+ unique classes, vs AI mode, local PvP, and data persistence.",
     },
-    tech: ["Spring Boot", "GitHub Actions", "Docker", "Azure"],
-    github: "https://github.com/sergioodisseu",
+    tech: ["C++", "CMake", "Docker"],
+    github: "https://github.com/sergioodisseu/fatalkombat1v1",
+    image: "docs/img/img-fatalkombat1v1.png",
     liveUrl: undefined,
   },
   {
-    year: "2025",
-    title: "SaaS API de Processamento de Documentos",
+    year: "2026",
+    title: "Markditor - Editor de Markdown",
     description: {
-      pt: "API modular em produção com NestJS e TypeScript, infraestrutura bare-metal própria, banco PostgreSQL com Prisma ORM e containerização com Docker.",
-      en: "Modular production API with NestJS and TypeScript, own bare-metal infrastructure, PostgreSQL with Prisma ORM and Docker containerization.",
+      pt: "Editor de Markdown moderno e multiplataforma construído do zero com Java e JavaFX. Inclui pré-visualização em tempo real (HTML), explorador de arquivos e renderização de alta performance.",
+      en: "Modern and cross-platform Markdown editor built from scratch with Java and JavaFX. Includes real-time HTML preview, file explorer, and high-performance rendering.",
     },
-    tech: ["NestJS", "TypeScript", "Prisma", "PostgreSQL", "Docker", "Linux"],
-    github: "https://github.com/sergioodisseu",
+    tech: ["Java", "JavaFX", "Maven"],
+    github: "https://github.com/sergioodisseu/mave-markdown-editor",
+    image: "docs/img/img-markditor.png",
     liveUrl: undefined,
   },
   {
-    year: "2025",
-    title: "Server Health Dashboard",
-    description: {
-      pt: "Dashboard de monitoramento de servidores em tempo real via WebSockets. Stack moderna com Bun, NestJS, Next.js, SQLite e Prisma, tudo containerizado.",
-      en: "Real-time server monitoring dashboard via WebSockets. Modern stack with Bun, NestJS, Next.js, SQLite and Prisma, fully containerized.",
-    },
-    tech: ["Bun", "NestJS", "Next.js", "SQLite", "Prisma", "Docker"],
-    github: "https://github.com/sergioodisseu",
-    liveUrl: undefined,
-  },
-  {
-    // TODO: ajuste o ano pra quando o projeto foi feito de verdade —
-    // deixei no fim da lista até você definir isso.
     year: "TODO",
     title: "Cobrinha 3D",
     description: {
@@ -65,6 +56,7 @@ export const projects = [
     },
     tech: ["C++", "raylib"],
     github: "https://github.com/sergioodisseu/snake",
+    image: "docs/img/img-snake.png",
     internalPath: "/projetos/cobrinha-3d",
-  },
+  }
 ];
