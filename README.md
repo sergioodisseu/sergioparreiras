@@ -2,7 +2,7 @@
 
 # Portfólio Profissional — Sérgio Parreiras
 
-<img src="docs/img/invader.gif" alt="alien" width="500" heigth="500">
+<img src="docs/img/invader.gif" alt="alien" width="500" height="500">
 
 ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -11,6 +11,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)
+![EmailJS](https://img.shields.io/badge/EmailJS-FF6C37?style=flat-square&logo=maildotru&logoColor=white)
 ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=cplusplus&logoColor=white)
 ![WebAssembly](https://img.shields.io/badge/WebAssembly-654FF0?style=flat-square&logo=webassembly&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
@@ -24,8 +25,8 @@
 **Professora:** Milena Menezes Adão · **Atividade:** Laboratório 1 — 2º Semestre/2026
 **Aluno:** Sérgio Parreiras
 
-**Repositório:** `TODO`
-**Site publicado:** `TODO`
+**Repositório:** [github.com/sergioodisseu/sergioparreiras](https://github.com/sergioodisseu/sergioparreiras)
+**Site publicado:** [sergioparreiras.onrender.com](https://sergioparreiras.onrender.com/)
 
 ---
 
@@ -40,24 +41,23 @@ rola suavemente até a seção correspondente, na mesma página.
 
 - **Sobre Mim** *(sprite: fantasma)* — resumo profissional em PT/EN,
   competências agrupadas por categoria e idiomas.
-- **Projetos** *(sprite: alien)* — linha do tempo com 6 projetos
-  (2023–2025), cada um com imagem, descrição, stack e link do
-  repositório. Um deles, a **Cobrinha 3D**, abre numa página própria
-  dentro do site em vez de um link externo — ver seção
-  [O jogo em C++/WebAssembly](#o-jogo-em-cwebassembly).
+- **Projetos** *(sprite: alien)* — linha do tempo com 6 projetos, cada
+  um com imagem, descrição, stack e link do repositório. Um deles, a
+  **Cobrinha 3D**, abre numa página própria dentro do site em vez de
+  um link externo — ver [O jogo em C++/WebAssembly](#o-jogo-em-cwebassembly).
 - **Experiências** *(sprite: moeda)* — FlowInsight (atual), PCX
   Tecnologia da Informação (estágio) e freelas via 99Freelas, com
   certificações (Red Hat, Cisco).
 - **Contato** *(sprite: joystick)* — links diretos para e-mail,
   WhatsApp, LinkedIn e GitHub, e um formulário que **envia e-mail de
-  verdade** através de um back-end próprio (ver
-  [Back-end / API de contato](#back-end--api-de-contato)).
+  verdade**, através do EmailJS — ver
+  [Contato / envio de e-mail](#contato--envio-de-e-mail).
 
-Diferente da maioria dos portfólios estáticos, este projeto tem duas
-partes que rodam de verdade: um **servidor Node.js** (para o envio de
-e-mail) e um **jogo em C++ compilado para WebAssembly** (embutido numa
-página própria). Por isso o projeto inteiro roda dentro de um único
-container Docker — ver [Rodando com Docker](#rodando-com-docker).
+O projeto tem duas partes que rodam de verdade, além do front-end: um
+**servidor Node.js/Express** (que serve o front-end e o jogo em
+produção) e um **jogo em C++ compilado para WebAssembly** (embutido
+numa página própria). Tudo roda dentro de um único container Docker —
+ver [Rodando com Docker](#rodando-com-docker).
 
 ## Tecnologias
 
@@ -68,20 +68,31 @@ container Docker — ver [Rodando com Docker](#rodando-com-docker).
 | **Vite** | Servidor de desenvolvimento e build do front-end |
 | **Tailwind CSS v4** | Estilização via utilitários, sobre tokens de cor próprios |
 | **JavaScript (JSX)** | Linguagem do front-end — sem TypeScript nesta versão |
-| **Node.js + Express** | Back-end: serve a API de contato e, em produção, o front-end e o jogo |
-| **Nodemailer** | Envio de e-mail de verdade via SMTP (Gmail) |
+| **Node.js + Express** | Serve o front-end e o jogo em produção (dentro do container Docker) |
+| **EmailJS** | Envio do formulário de contato — ver nota abaixo |
 | **C++ / raylib** | O jogo "Cobrinha 3D" |
 | **Emscripten / WebAssembly** | Compila o jogo em C++ para rodar direto no navegador |
 | **Docker / Docker Compose** | Empacota front-end, back-end e o build do jogo num único container |
 | **Figma** | Wireframes de média fidelidade |
-| **Render** | Hospedagem prevista (ver nota sobre a Vercel, abaixo) |
+| **Render** | Hospedagem — Web Service a partir do `Dockerfile` |
 
-> **Nota sobre hospedagem:** este projeto **não pode ser hospedado na
-> Vercel**. A Vercel é uma plataforma serverless/estática — ela não
-> executa containers Docker nem processos de servidor de longa
-> duração, e este projeto depende de um servidor Express rodando o
-> tempo todo. Por isso a hospedagem escolhida foi uma plataforma com
-> suporte nativo a Docker (Render).
+> **Por que EmailJS, e não um back-end com Nodemailer/SMTP?**
+> O projeto tem, sim, um servidor Express (`server/`) — ele continua
+> ativo e é quem serve o front-end e o jogo em produção. Mas o
+> **envio de e-mail em si** não passa mais por ele: o Render **bloqueia
+> conexões SMTP de saída** na rede dele (uma limitação real da
+> plataforma, comum em provedores gratuitos, pra evitar abuso de
+> spam). Por isso o formulário de contato usa o
+> **[EmailJS](https://www.emailjs.com/)**, que envia o e-mail
+> diretamente do navegador da pessoa visitante, sem depender de SMTP
+> no servidor — funciona igual tanto local quanto no Render.
+
+> **Nota sobre a Vercel:** este projeto não pode ser hospedado lá. A
+> Vercel é uma plataforma serverless/estática — não executa
+> containers Docker nem processos de servidor de longa duração, e
+> este projeto depende do Express rodando o tempo todo (pra servir o
+> front-end e o jogo). Por isso a hospedagem escolhida foi o Render,
+> que aceita o `Dockerfile` diretamente.
 
 ## Design
 
@@ -99,6 +110,10 @@ não são reproduções de personagens de nenhum jogo específico.
 Tipografia: **Press Start 2P** (pixelada) em títulos e rótulos,
 **VT323** (monoespaçada, mais legível em bloco) no texto corrido.
 
+Guia completo de estilo (paleta, tipografia, sprites, componentes,
+acessibilidade) em **[STYLEGUIDE.md](docs/STYLEGUIDE.md)** — versão visual
+em imagem na seção [Styleguide](#styleguide), no fim deste documento.
+
 ## O jogo em C++/WebAssembly
 
 O projeto "Cobrinha 3D" (`game/main.cpp`) é um Snake em 3D que roda na
@@ -110,10 +125,9 @@ próprio site**, na página `/projetos/cobrinha-3d`.
 Isso é possível graças ao **[Emscripten](https://emscripten.org/)**,
 um compilador que transforma código C/C++ em **WebAssembly (Wasm)** —
 um formato binário que os navegadores conseguem executar em velocidade
-próxima da nativa, sem precisar instalar nada. Na prática, o mesmo
-código C++ que rodaria como um executável no Windows/Linux é
-compilado para essa página com o comando `em++` (o `g++` do
-Emscripten), gerando um trio de arquivos:
+próxima da nativa, sem precisar instalar nada. O mesmo código C++ que
+rodaria como um executável no Windows/Linux é compilado com o comando
+`em++` (o `g++` do Emscripten), gerando um trio de arquivos:
 
 - `index.wasm` — o código compilado de verdade;
 - `index.js` — a "cola" em JavaScript que carrega o `.wasm` e conecta
@@ -122,22 +136,31 @@ Emscripten), gerando um trio de arquivos:
   partir do template em `game/shell.html`).
 
 Esses três arquivos são gerados automaticamente durante o build do
-Docker (ver abaixo) e embutidos na página React através de um
-`<iframe>`.
+Docker e embutidos na página React através de um `<iframe>`.
 
-## Back-end / API de contato
+## Contato / envio de e-mail
 
-O formulário da seção Contato não usa `mailto:` — ele envia a
-mensagem de verdade, através de um back-end próprio em `server/`:
+O formulário da seção Contato usa o **[EmailJS](https://www.emailjs.com/)**:
+o React monta os dados (nome, e-mail, mensagem) e chama o SDK do
+EmailJS diretamente do navegador, sem passar por nenhum servidor
+próprio — é o EmailJS quem entrega a mensagem na caixa de entrada.
 
-- **Express** expõe uma única rota, `POST /api/contact`, que valida
-  os dados e usa o **Nodemailer** para enviar um e-mail via SMTP do
-  Gmail (autenticado com uma *senha de app*, não a senha da conta).
-- Em produção, esse mesmo servidor também serve os arquivos estáticos
-  do front-end (`dist/`) e do jogo (`game/`) — front-end, back-end e
-  jogo respondem todos pela mesma porta.
-- Configuração detalhada (como gerar a senha de app do Gmail) em
-  [`server/README.md`](server/README.md).
+Para rodar localmente com o envio funcionando de verdade, crie um
+arquivo `.env` na **raiz do projeto** (não em `server/`) com as
+credenciais da sua conta EmailJS:
+
+```
+VITE_EMAILJS_SERVICE_ID=xxxxxxxxxxxxxxxx
+VITE_EMAILJS_TEMPLATE_ID=xxxxxxxxxxxxxxxx
+VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxx
+```
+
+> O prefixo `VITE_` é obrigatório — é assim que o Vite decide quais
+> variáveis de ambiente ficam expostas no código do navegador.
+
+O servidor Express (`server/`) mantém a rota `/api/contact` original
+como parte do histórico do projeto, mas ela **não é mais usada** pelo
+formulário — o envio de e-mail depende só do EmailJS.
 
 ## Arquitetura do código
 
@@ -154,18 +177,17 @@ portfolio-sergio/
 │   ├── main.cpp                 # código-fonte (raylib)
 │   └── shell.html                # template HTML usado pelo Emscripten
 │
-├── server/                    # back-end Express
-│   ├── index.js                  # rota /api/contact + serve o front-end/jogo em produção
+├── server/                    # back-end Express — serve front-end e jogo em produção
+│   ├── index.js
 │   ├── package.json
-│   ├── .env.example               # modelo de configuração (copie para .env)
-│   └── README.md                  # como gerar a senha de app do Gmail
+│   └── README.md
 │
 ├── docs/
-│   └── img/                    # imagens usadas neste README (wireframes, etc.)
+│   └── img/                    # imagens usadas neste README (wireframes, gif, styleguide)
 │
 ├── public/
 │   ├── favicon.svg
-│   └── projects/                # prints dos projetos, usados nos cards
+│   └── img/                     # prints dos projetos, usados nos cards
 │
 └── src/
     ├── main.jsx                  # ponto de entrada + BrowserRouter
@@ -197,7 +219,7 @@ portfolio-sergio/
         ├── Experience.jsx             # seção "Experiências"
         ├── ExperienceItem.jsx         # item de experiência
         ├── Contact.jsx                # seção "Contato"
-        ├── ContactForm.jsx            # formulário (envia via API real)
+        ├── ContactForm.jsx            # formulário (envia via EmailJS)
         ├── ContactLink.jsx            # link de contato com ícone
         ├── Footer.jsx
         ├── icons/index.jsx            # ícones SVG usados no site
@@ -211,23 +233,25 @@ O `Dockerfile` monta tudo num único container, em três etapas:
 1. **Compila o jogo** — usa a imagem oficial do Emscripten pra
    compilar o raylib para Web e depois o `main.cpp` em cima dele,
    gerando o `index.html`/`.js`/`.wasm` do jogo.
-2. **Builda o front-end** — `npm run build` do React/Vite.
+2. **Builda o front-end** — `npm run build` do React/Vite (precisa das
+   variáveis `VITE_EMAILJS_*` disponíveis nesse momento — ver acima).
 3. **Monta o servidor final** — copia o build do front-end e os
    arquivos do jogo para dentro do servidor Express, que passa a
-   servir tudo (front-end, jogo e API de contato) na mesma porta.
+   servir os dois na mesma porta.
 
 ```bash
-cd server
-cp .env.example .env
-# edite o .env com seu GMAIL_USER e GMAIL_APP_PASSWORD
-
-cd ..
+# crie o .env na raiz com as credenciais do EmailJS (ver seção acima)
 docker compose up --build
 ```
 
 Abre em `http://localhost:3001`. A primeira build demora bastante
 (baixa e compila o raylib do zero — pode passar de 10 minutos); as
 próximas usam cache do Docker e são bem mais rápidas.
+
+É essa mesma imagem Docker que roda no Render — o serviço lá foi
+criado como *Web Service* apontando direto pro `Dockerfile` do
+repositório, com as variáveis `VITE_EMAILJS_*` configuradas no painel
+do Render em vez de um `.env` local.
 
 ## Instalação e execução local (sem Docker)
 
@@ -239,25 +263,24 @@ npm run build      # gera dist/
 npm run preview    # serve a build localmente
 ```
 
-O formulário de contato depende do back-end em `server/` pra
-realmente enviar o e-mail:
-
-```bash
-cd server
-npm install
-npm run dev       # http://localhost:3001
-```
-
 Rodando assim (sem Docker), a rota do jogo (`/projetos/cobrinha-3d`)
 abre normalmente, mas o jogo em si fica em branco — o WebAssembly só
 existe depois de rodar `docker compose up --build` pelo menos uma
-vez, porque é o Dockerfile que compila o C++.
+vez, porque é o Dockerfile que compila o C++. O formulário de contato
+funciona normalmente (o EmailJS não depende do Docker).
 
 ## Wireframes
 
 Protótipos de média fidelidade das telas principais do site.
 
-
 ![Wireframe do portfólio](docs/img/wireframe.png)
 
 ![Wireframe da página do jogo](docs/img/wireframe-game-page.png)
+
+## Styleguide
+
+Paleta de cores, tipografia, sprites e componentes usados no site —
+detalhado em texto no [`STYLEGUIDE.md`](docs/STYLEGUIDE.md), e em imagem
+abaixo.
+
+![Styleguide](docs/img/styleguide.png)
