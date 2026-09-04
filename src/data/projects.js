@@ -20,7 +20,7 @@ export const projects = [
     },
     tech: ["Java", "Spring Boot", "PostgreSQL", "AWS EC2", "AWS RDS", "React"],
     github: "https://github.com/sergioodisseu",
-    image: "/img/img-livrementehomeopatia.png",
+    image: "/img/img-livremente.png",
     liveUrl: undefined,
   },
   {
@@ -44,7 +44,7 @@ export const projects = [
     },
     tech: ["Java", "JavaFX", "Maven"],
     github: "https://github.com/sergioodisseu/mave-markdown-editor",
-    image: "/img/img-markditor.png",
+    image: "/img/img-markdown.png",
     liveUrl: undefined,
   },
   {
