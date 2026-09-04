@@ -2,6 +2,8 @@
 
 # Portfólio Profissional — Sérgio Parreiras
 
+<img src="docs/img/invader.gif" alt="alien" width="500" heigth="500">
+
 ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
