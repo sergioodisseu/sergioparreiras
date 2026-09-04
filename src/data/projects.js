@@ -8,7 +8,7 @@ export const projects = [
     },
     tech: ["Java", "Spring Boot", "PostgreSQL", "React"],
     github: "https://github.com/sergioodisseu",
-    image: "docs/img/img-safetrade.png",
+    image: "/img/img-safetrade.png",
     liveUrl: undefined,
   },
   {
@@ -20,7 +20,7 @@ export const projects = [
     },
     tech: ["Java", "Spring Boot", "PostgreSQL", "AWS EC2", "AWS RDS", "React"],
     github: "https://github.com/sergioodisseu",
-    image: "docs/img/img-livrementehomeopatia.png",
+    image: "/img/img-livrementehomeopatia.png",
     liveUrl: undefined,
   },
   {
@@ -32,7 +32,7 @@ export const projects = [
     },
     tech: ["C++", "CMake", "Docker"],
     github: "https://github.com/sergioodisseu/fatalkombat1v1",
-    image: "docs/img/img-fatalkombat1v1.png",
+    image: "/img/img-fatalkombat1v1.png",
     liveUrl: undefined,
   },
   {
@@ -44,7 +44,7 @@ export const projects = [
     },
     tech: ["Java", "JavaFX", "Maven"],
     github: "https://github.com/sergioodisseu/mave-markdown-editor",
-    image: "docs/img/img-markditor.png",
+    image: "/img/img-markditor.png",
     liveUrl: undefined,
   },
   {
@@ -56,7 +56,7 @@ export const projects = [
     },
     tech: ["C++", "raylib"],
     github: "https://github.com/sergioodisseu/snake",
-    image: "docs/img/img-snake.png",
+    image: "/img/img-snake.png",
     internalPath: "/projetos/cobrinha-3d",
   }
 ];
