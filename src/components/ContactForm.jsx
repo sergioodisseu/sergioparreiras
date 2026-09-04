@@ -1,17 +1,11 @@
 import { useState } from "react";
 import { Field, TextAreaField } from "./ui/Field";
+import emailjs from '@emailjs/browser';
 
 const emptyForm = { name: "", email: "", message: "" };
 const ACCENT = "var(--color-joystick)";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_MESSAGE_LENGTH = 10;
-
-/**
- * URL do back-end de contato. Caminho relativo: funciona tanto em producao 
- * ( front e back servidos pelo mesmo container) quanto em desenvolvimento local
- * via proxy configurado no vite
- */
-const CONTACT_API_URL = "/api/contact";
 
 const errorMessages = {
   pt: {
@@ -59,19 +53,27 @@ export default function ContactForm({ lang }) {
     }
 
     setStatus("sending");
-    try {
-      const response = await fetch(CONTACT_API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
 
-      if (!response.ok) throw new Error("Falha no envio");
+    const templateParams = {
+      name: form.name,
+      email: form.email,
+      message: form.message,
+      title: lang === "pt" ? "Contato via Portfólio" : "Contact via Portfolio",
+    };
+
+    try {
+      await emailjs.send(
+        'service_6mc17ce',      
+        'template_9btcorq',      
+        templateParams,
+        'T-spuYv0DlyBTAmGZ'     
+      );
 
       setStatus("sent");
       setForm(emptyForm);
       setTimeout(() => setStatus("idle"), 5000);
-    } catch {
+    } catch (error) {
+      console.error("Erro no envio:", error);
       setStatus("idle");
       setErrors({ server: errorMessages[lang].server });
     }
