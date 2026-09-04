@@ -25,8 +25,12 @@
 **Professora:** Milena Menezes Adão · **Atividade:** Laboratório 1 — 2º Semestre/2026
 **Aluno:** Sérgio Parreiras
 
-**Repositório:** [github.com/sergioodisseu/sergioparreiras](https://github.com/sergioodisseu/sergioparreiras)
-**Site publicado:** [sergioparreiras.onrender.com](https://sergioparreiras.onrender.com/)
+<div align="center">
+
+[![Repositório](https://img.shields.io/badge/Reposit%C3%B3rio-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sergioodisseu/sergioparreiras)
+[![Site Publicado](https://img.shields.io/badge/Site%20Publicado-Render-000000?style=for-the-badge&logo=render&logoColor=white)](https://sergioparreiras.onrender.com/)
+
+</div>
 
 ---
 
@@ -111,7 +115,7 @@ Tipografia: **Press Start 2P** (pixelada) em títulos e rótulos,
 **VT323** (monoespaçada, mais legível em bloco) no texto corrido.
 
 Guia completo de estilo (paleta, tipografia, sprites, componentes,
-acessibilidade) em **[STYLEGUIDE.md](docs/STYLEGUIDE.md)** — versão visual
+acessibilidade) em **[STYLEGUIDE.md](STYLEGUIDE.md)** — versão visual
 em imagem na seção [Styleguide](#styleguide), no fim deste documento.
 
 ## O jogo em C++/WebAssembly
@@ -280,7 +284,7 @@ Protótipos de média fidelidade das telas principais do site.
 ## Styleguide
 
 Paleta de cores, tipografia, sprites e componentes usados no site —
-detalhado em texto no [`STYLEGUIDE.md`](docs/STYLEGUIDE.md), e em imagem
+detalhado em texto no [`STYLEGUIDE.md`](STYLEGUIDE.md), e em imagem
 abaixo.
 
 ![Styleguide](docs/img/styleguide.png)
